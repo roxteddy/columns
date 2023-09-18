@@ -1,1 +1,4 @@
-<app-column [numbers]="columns[0]"></app-column>
+<app-column *ngFor="let column of columns; let i = index"
+            [cells]="column()"
+            (addNumber)="addCell($event, i)">
+</app-column>

@@ -1,9 +1,15 @@
-<p>{{title}} ({{numbers?.length}})</p>
-<div *ngFor="let number of numbers"
+<p>{{title}} ({{cells?.length || 0}})</p>
+<div *ngFor="let cell of cells"
      class="cell"
      [ngClass]="{
-       mod3: number % 3 === 0,
-       mod5: number % 5 === 0
+       mod3: cell.value % 3 === 0,
+       mod5: cell.value % 5 === 0
      }">
-  {{number}}
+  {{cell.value}}
 </div>
+<input placeholder="Add number"
+       type="number"
+       [ngClass]="{error: numberControl.dirty && numberControl.hasError('required')}"
+       [formControl]="numberControl">
+<button type="submit"
+        (click)="onAddNumber()">OK</button>

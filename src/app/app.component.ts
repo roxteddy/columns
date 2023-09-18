@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
+
+export interface Cell {
+  value: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -6,8 +10,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'columns';
-  columns = [
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15]
+  columns : WritableSignal<Cell[]>[] = [
+    signal([]),
+    signal([]),
+    signal([])
   ];
+
+  addCell(value: number, columnIndex: number) {
+    this.columns[columnIndex].mutate(cells => cells.push({ value }));
+  }
+
+  removeCell(cell: Cell, columnIndex: number) {
+    this.columns[columnIndex].mutate(cells => cells.shift());
+  }
 }

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Cell } from '../app.component';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-column',
@@ -8,5 +10,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class ColumnComponent {
   @Input() title = 'no_name';
-  @Input() numbers: number[] = [];
+  @Input() cells?: Cell[];
+
+  @Output() addNumber = new EventEmitter<number>();
+
+  numberControl = new FormControl(undefined, [
+    Validators.required
+  ]);
+
+  onAddNumber() {
+    if (typeof this.numberControl.value === 'number') {
+      this.addNumber.emit(this.numberControl.value);
+      this.numberControl.reset();
+    }
+  }
 }
