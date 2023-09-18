@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 15rem;
+  background-color: grey;
+
+  .cell {
+    background-color: red;
+
+    &.mod3 {
+      background-color: limegreen;
+    }
+    &.mod5 {
+      background-color: dodgerblue;
+    }
+    &.mod3.mod5 {
+      background-color: yellow;
+    }
+  }
+}

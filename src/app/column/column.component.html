@@ -1,0 +1,9 @@
+<p>{{title}} ({{numbers?.length}})</p>
+<div *ngFor="let number of numbers"
+     class="cell"
+     [ngClass]="{
+       mod3: number % 3 === 0,
+       mod5: number % 5 === 0
+     }">
+  {{number}}
+</div>
