@@ -21,6 +21,6 @@ export class AppComponent {
   }
 
   onRemoveCell(cell: Cell, columnIndex: number) {
-    this.columns[columnIndex].mutate(cells => cells.shift());
+    this.columns[columnIndex].mutate(cells => cells.splice(cells.indexOf(cell), 1));
   }
 }
