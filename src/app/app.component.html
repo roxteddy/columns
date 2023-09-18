@@ -1,4 +1,4 @@
 <app-column *ngFor="let column of columns; let i = index"
             [cells]="column()"
-            (addNumber)="addCell($event, i)">
+            (addNumber)="onAddCell($event, i)" (removeCell)="onRemoveCell($event, i)">
 </app-column>

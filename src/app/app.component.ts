@@ -16,11 +16,11 @@ export class AppComponent {
     signal([])
   ];
 
-  addCell(value: number, columnIndex: number) {
+  onAddCell(value: number, columnIndex: number) {
     this.columns[columnIndex].mutate(cells => cells.push({ value }));
   }
 
-  removeCell(cell: Cell, columnIndex: number) {
+  onRemoveCell(cell: Cell, columnIndex: number) {
     this.columns[columnIndex].mutate(cells => cells.shift());
   }
 }

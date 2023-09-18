@@ -13,6 +13,7 @@ export class ColumnComponent {
   @Input() cells?: Cell[];
 
   @Output() addNumber = new EventEmitter<number>();
+  @Output() removeCell = new EventEmitter<Cell>();
 
   numberControl = new FormControl(undefined, [
     Validators.required
@@ -23,5 +24,9 @@ export class ColumnComponent {
       this.addNumber.emit(this.numberControl.value);
       this.numberControl.reset();
     }
+  }
+
+  onRemoveCell(cell: Cell) {
+    this.removeCell.emit(cell);
   }
 }

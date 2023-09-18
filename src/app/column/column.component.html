@@ -6,6 +6,7 @@
        mod5: cell.value % 5 === 0
      }">
   {{cell.value}}
+  <button (click)="onRemoveCell(cell)">X</button>
 </div>
 <input placeholder="Add number"
        type="number"

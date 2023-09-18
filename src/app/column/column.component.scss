@@ -2,9 +2,11 @@
   display: block;
   width: 15rem;
   background-color: grey;
+  color: white;
 
   .cell {
     background-color: red;
+    color: black;
 
     &.mod3 {
       background-color: limegreen;
